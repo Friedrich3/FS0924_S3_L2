@@ -193,10 +193,11 @@
     */
       tableStructure=["immagine", "nome prodotto", "quantità", "prezzo"];
       const tableArea = document.getElementById("tableArea");
-
+      let table;
+      let tableRow;
       const generateTable = function () {
-        const table = document.createElement("table");
-        const tableRow = document.createElement("tr");
+        table = document.createElement("table");
+        tableRow = document.createElement("tr");
         tableStructure.forEach((element) =>{
           const tableHeading = document.createElement("th");
           tableHeading.innerText = element;
@@ -210,15 +211,31 @@
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
     */
-
-      const addRow = function () {};
-
+      arrayParametri = ["assets/img/caramella.jpg","nome","quantiSono","TantiSoldi"]; 
+      const addRow = function () {
+        tableRow = document.createElement("tr");
+        arrayParametri[0] = `<img src="${arrayParametri[0]}"" alt="caramella"></img>`;
+        arrayParametri.forEach((element) => {
+          const tableParameter = document.createElement("td")
+          tableParameter.innerHTML = element;
+          tableRow.appendChild(tableParameter);
+        })
+        
+        table.appendChild(tableRow);
+      };
+      addRow()
       /* ESERCIZIO 14
       Crea una funzione che nasconda le immagini della tabella quando eseguita
     */
+console.log(document.querySelectorAll("img"));
+      const hideAllImages = function () {
+        const hideImages = document.querySelectorAll("img");
+        hideImages.forEach((element) => {
+          element.src = "";
+        });
 
-      const hideAllImages = function () {};
-
+      };
+      hideAllImages();
       /* EXTRA ESERCIZIO 15
       Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
     */
