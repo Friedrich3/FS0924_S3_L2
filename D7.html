@@ -103,8 +103,8 @@
       */
 
       const changePcontent = function () {
-        const changeP = document.querySelectorAll("div p");
-        changeP.forEach((element) => 
+        const changeP = document.querySelectorAll("div p");   //nota dopo ES 6 Non è stato messo globale poiche 
+        changeP.forEach((element) =>                          //le funzioni vengono dichirate Esercizio per Esercizio
           element.innerText = "Stiamo cambiando anche il Testo dei paragrafi"
       )
       };
@@ -137,20 +137,31 @@
        Scrivi una funzione che aggiunga un secondo paragrafo al primo div
     */
 
-      const addParagraph = function () {};
-
+      const addParagraph = function () {
+        const firstDiv = document.querySelector("body div");
+        const newParagraph = document.createElement("p");
+        newParagraph.innerText = "Questo è stato aggiunto per l'Esercizio 6";
+        firstDiv.appendChild(newParagraph);
+      };
+      addParagraph();
       /* ESERCIZIO 7
        Scrivi una funzione che faccia scomparire la prima lista non ordinata
     */
 
-      const hideFirstUl = function () {};
-
+      const hideFirstUl = function () {
+        const hideUl = document.getElementById("firstList");
+        hideUl.innerText = "";
+      };
+        hideFirstUl();
       /* ESERCIZIO 8 
        Scrivi una funzione che renda verde il background di ogni lista non ordinata
       */
-
-      const paintItGreen = function () {};
-
+      const paintItGreen = function () {
+        const paintUl = document.querySelectorAll("ul");
+        paintUl.forEach((element) => {
+          element.style.backgroundColor = "green"})
+      };
+        paintItGreen();
       /* ESERCIZIO 9
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
