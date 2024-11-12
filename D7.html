@@ -69,7 +69,10 @@
       </h2>
     </div>
 
-    <div id="tableArea"></div>
+    <div id="tableArea">
+
+
+    </div>
 
     <footer>
       <h3>
@@ -188,8 +191,21 @@
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
+      tableStructure=["immagine", "nome prodotto", "quantità", "prezzo"];
+      const tableArea = document.getElementById("tableArea");
 
-      const generateTable = function () {};
+      const generateTable = function () {
+        const table = document.createElement("table");
+        const tableRow = document.createElement("tr");
+        tableStructure.forEach((element) =>{
+          const tableHeading = document.createElement("th");
+          tableHeading.innerText = element;
+          tableRow.appendChild(tableHeading);
+        } )
+        table.appendChild(tableRow);
+        tableArea.appendChild(table);
+      };
+      generateTable();
 
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
