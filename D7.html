@@ -29,7 +29,6 @@
 
       .myHeading {
         color: #ff00d6;
-        
       }
     </style>
   </head>
@@ -69,10 +68,7 @@
       </h2>
     </div>
 
-    <div id="tableArea">
-
-
-    </div>
+    <div id="tableArea"></div>
 
     <footer>
       <h3>
@@ -107,22 +103,24 @@
       */
 
       const changePcontent = function () {
-        const changeP = document.querySelectorAll("div p");   //nota dopo ES 6 Non è stato messo globale poiche 
-        changeP.forEach((element) =>                          //le funzioni vengono dichirate Esercizio per Esercizio
-          element.innerText = "Stiamo cambiando anche il Testo dei paragrafi"
-      )
+        const changeP = document.querySelectorAll("div p"); //nota dopo ES 6 Non è stato messo globale poiche
+        changeP.forEach(
+          (
+            element //le funzioni vengono dichirate Esercizio per Esercizio
+          ) =>
+            (element.innerText =
+              "Stiamo cambiando anche il Testo dei paragrafi")
+        );
       };
-        changePcontent();
+      changePcontent();
       /* ESERCIZIO 4
        Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
       */
       const changeUrls = function () {
         const urlChange = document.querySelectorAll("a:not(footer a)");
-        urlChange.forEach((element) =>{
-        element.href = ("https://www.google.com");
+        urlChange.forEach((element) => {
+          element.href = "https://www.google.com";
         });
-
-
       };
       changeUrls();
       /* ESERCIZIO 5
@@ -134,7 +132,6 @@
         const newListItem = document.createElement("li");
         newListItem.innerText = "Nuovo Elemento Lista";
         addSecondList.appendChild(newListItem);
-
       };
       addToTheSecond();
       /* ESERCIZIO 6
@@ -154,25 +151,25 @@
 
       const hideFirstUl = function () {
         const hideUl = document.getElementById("firstList");
-        hideUl.innerText = "";
+        hideUl.remove(); //ERA MEGLIO hideUl.remove();
       };
-        hideFirstUl();
+      hideFirstUl();
       /* ESERCIZIO 8 
        Scrivi una funzione che renda verde il background di ogni lista non ordinata
       */
       const paintItGreen = function () {
         const paintUl = document.querySelectorAll("ul");
         paintUl.forEach((element) => {
-          element.style.backgroundColor = "green"})
+          element.style.backgroundColor = "green";
+        });
       };
-        paintItGreen();
+      paintItGreen();
       /* ESERCIZIO 9
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
-     console.log(title.innerText)
       const makeItClickable = function () {
-        title.addEventListener("click", function(){
-          title.innerText = title.innerText.slice(0,-1);
+        title.addEventListener("click", function () {
+          title.innerText = title.innerText.slice(0, -1);
         });
       };
       makeItClickable();
@@ -182,7 +179,7 @@
       */
       const revealFooterLink = function () {
         const revealFooter = document.querySelector("footer a");
-        revealFooter.addEventListener("click", function(){
+        revealFooter.addEventListener("click", function () {
           alert(revealFooter.href);
         });
       };
@@ -191,18 +188,18 @@
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
-      tableStructure=["immagine", "nome prodotto", "quantità", "prezzo"];
+      tableStructure = ["immagine", "nome prodotto", "quantità", "prezzo"];
       const tableArea = document.getElementById("tableArea");
       let table;
       let tableRow;
       const generateTable = function () {
         table = document.createElement("table");
         tableRow = document.createElement("tr");
-        tableStructure.forEach((element) =>{
+        tableStructure.forEach((element) => {
           const tableHeading = document.createElement("th");
           tableHeading.innerText = element;
           tableRow.appendChild(tableHeading);
-        } )
+        });
         table.appendChild(tableRow);
         tableArea.appendChild(table);
       };
@@ -211,42 +208,71 @@
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
     */
-      arrayParametri = ["assets/img/caramella.jpg","nome","quantiSono","TantiSoldi"]; 
-      const addRow = function () {
+      arrayParametri = [
+        "assets/img/caramella.jpg",
+        "nome Prodotto",
+        "quantiSono",
+        "TantiSoldi",
+      ];
+      arrayParametriDue = [
+        "assets/img/caramella.jpg",
+        "nome Prodotto",
+        "quantiSono",
+        "TantiSoldi",
+      ];
+      const addRow = function (arrayFornito) {
         tableRow = document.createElement("tr");
-        arrayParametri[0] = `<img src="${arrayParametri[0]}"" alt="caramella"></img>`;
-        arrayParametri.forEach((element) => {
-          const tableParameter = document.createElement("td")
+        arrayFornito[0] = `<img src="${arrayFornito[0]}" alt="fotoProdotto"></img>`;
+        arrayFornito.forEach((element) => {
+          const tableParameter = document.createElement("td");
           tableParameter.innerHTML = element;
           tableRow.appendChild(tableParameter);
-        })
-        
+        });
+
         table.appendChild(tableRow);
       };
-      addRow()
+      addRow(arrayParametri);
+      addRow(arrayParametriDue);
       /* ESERCIZIO 14
       Crea una funzione che nasconda le immagini della tabella quando eseguita
     */
-console.log(document.querySelectorAll("img"));
       const hideAllImages = function () {
         const hideImages = document.querySelectorAll("img");
         hideImages.forEach((element) => {
           element.src = "";
         });
-
       };
       hideAllImages();
       /* EXTRA ESERCIZIO 15
       Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
     */
+      const changeColorWithRandom = function () {
 
-      const changeColorWithRandom = function () {};
+        const subTitle = document.getElementById("changeMyColor");
+        subTitle.addEventListener("click", function(){
+        let R = Math.floor(Math.random() * 255);
+        let G = Math.floor(Math.random() * 255);
+        let B = Math.floor(Math.random() * 255);
+          subTitle.style.color = `rgb(${R},${G},${B})`;
 
+        });
+      };
+      changeColorWithRandom();
       /* EXTRA ESERCIZIO 16
       Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
     */
 
-      const deleteVowels = function () {};
+const vowelsInsideBody = document.querySelectorAll("body")[0];
+console.log(vowelsInsideBody.innerText);
+      const deleteVowels = function () {
+        const vowels=["a","e","i","o","u"];
+        corpoBody = vowelsInsideBody.innerText.split("");
+      console.log(corpoBody);
+      for(let i = 0; i <corpoBody.lenght);
+          
+      
+      };
+      deleteVowels();
     </script>
   </body>
 </html>
