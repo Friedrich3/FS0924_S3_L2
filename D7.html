@@ -29,6 +29,7 @@
 
       .myHeading {
         color: #ff00d6;
+        
       }
     </style>
   </head>
@@ -165,15 +166,24 @@
       /* ESERCIZIO 9
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
-
-      const makeItClickable = function () {};
+     console.log(title.innerText)
+      const makeItClickable = function () {
+        title.addEventListener("click", function(){
+          title.innerText = title.innerText.slice(0,-1);
+        });
+      };
+      makeItClickable();
 
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
       */
-
-      const revealFooterLink = function () {};
-
+      const revealFooterLink = function () {
+        const revealFooter = document.querySelector("footer a");
+        revealFooter.addEventListener("click", function(){
+          alert(revealFooter.href);
+        });
+      };
+      revealFooterLink();
       /* ESERCIZIO 11
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
